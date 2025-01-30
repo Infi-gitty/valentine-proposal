@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+            overflow: hidden; /* Ensure confetti stays within the viewport */
+        }
+
+        .screen {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        .screen.active {
+            display: block;
+        }
+        h1, h2 {
+            color: #ff4081;
+            text-shadow: 1px 1px 2px #fff;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #ff1a66;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(1);
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            border: 2px solid #ff4081;
+            border-radius: 10px;
+            margin-top: 10px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #ff1a66;
+        }
+        img {
+            width: 300px;
+            margin-top: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4081;
+            opacity: 0.6;
+            animation: confetti-fall linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-screen" class="screen active">
+        <h2>What am I to you?</h2>
+        <p>Guess the word:</p>
+        <input type="text" id="guess-input">
+        <button onclick="checkGuess()">Submit</button>
+        <p id="message"></p>
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute cat couple GIF">
+    </div>
+
+    <div id="proposal-screen" class="screen">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGdyNTZlYWF3eXB0N3d1cnhnbmh6cG90Y2Q1dnpmbzJocWc1ZTMwdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kvrvnB158J4fm/giphy.gif" alt="Cute cat doodle GIF">
+        <button onclick="handleYesClick()">Yes! 💕</button>
+        <button onclick="handleYesClick()">Definitely Yes! 💖</button>
+    </div>
+
+    <div id="end-screen" class="screen">
+        <h1>Stay ready on 14th, I'll be there to pick you up. 😽</h1>
+        <img src="https://media1.tenor.com/m/UXLmgQdkDesAAAAd/robert-bri.gif" alt="Cat kissing hearts GIF">
+    </div>
+
+    <!-- Background music -->
+    <audio id="background-music" loop autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <script defer src="script.js"></script>
+</body>
+</html>
